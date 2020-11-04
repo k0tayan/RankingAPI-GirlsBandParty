@@ -12,13 +12,13 @@ import (
 )
 
 func UnpadByPKCS7(data []byte) []byte {
-    padSize := int(data[len(data) - 1])
-    return data[:len(data) - padSize]
+	padSize := int(data[len(data) - 1])
+	return data[:len(data) - padSize]
 }
 
 func main(){
 	decryptKey := []byte("")
-    decryptIV := []byte("")
+	decryptIV := []byte("")
 	host := "https://api.star.craftegg.jp"
 
 	signature := ""
@@ -47,9 +47,9 @@ func main(){
 
 	c, err := aes.NewCipher(decryptKey)
 	if err != nil {
-        fmt.Printf("Error: NewCipher(%d bytes) = %s.", len(decryptKey), err)
-        os.Exit(-1)
-    }
+		fmt.Printf("Error: NewCipher(%d bytes) = %s.", len(decryptKey), err)
+		os.Exit(-1)
+	}
 	cbcdec := cipher.NewCBCDecrypter(c, decryptIV)
 	plainText := make([]byte, len(byteArray))
 
